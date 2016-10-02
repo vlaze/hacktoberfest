@@ -31,6 +31,10 @@ echo "-d  move directories to the destination directory"
 echo "-o  force move individual files and overwrite in destination"
 }
 
+dir()
+{
+find "$source"* -type d -maxdepth 0 -print0 |xargs -0 -I '{}' mv -n -v {} "$dest" >> log/ebook.log
+}
 
 # Check to see if ther are any epub or mobi or pdf files
 count=`ls -1 "$source"*.epub 2>/dev/null | wc -l`
