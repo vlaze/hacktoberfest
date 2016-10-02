@@ -20,6 +20,22 @@ dest=/Users/josdmyer/Documents/Books/Books/
 list=/Users/josdmyer/.Scripts/
 option=false
 
+usage()
+{
+	clear
+	echo "ebook.sh"
+	echo "Description:  Is a program to help clean up ebook files and put them in their proper location"
+echo
+echo "Options:"
+echo "-d  move directories to the destination directory"
+echo "-o  force move individual files and overwrite in destination"
+}
+
+dir()
+{
+find "$source"* -type d -maxdepth 0 -print0 |xargs -0 -I '{}' mv -n -v {} "$dest" >> log/ebook.log
+}
+
 # Check to see if ther are any epub or mobi or pdf files
 count=`ls -1 "$source"*.epub 2>/dev/null | wc -l`
 count2=`ls -1 "$source"*.mobi 2>/dev/null | wc -l`
@@ -166,6 +182,8 @@ movePDF()
 }
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Main ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+if [ "$#" -eq 0 ] || [ "$1" == "-o" ]
+then
 clear
 log
 clear
@@ -184,5 +202,11 @@ fi
 # if pdf list exist delete it
 if [ -f list3.txt ]; then
 	rm list3.txt
+fi
+elif [ "$1" == "-d" ]
+then
+	dir
+else
+	usage
 fi
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ End of File ~~~~~~~~~~~~~~~~~~~~~~~~~
