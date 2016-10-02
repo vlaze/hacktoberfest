@@ -4,6 +4,7 @@ $Code = null;
 if ( !empty($_GET['Code'])) {
 	$Code = $_REQUEST['Code'];
 }
+
 if ( null==$Code ) {
 	header("Location: ../index.php");
 } else {
@@ -96,6 +97,7 @@ if ( null==$Code ) {
     						echo'<li>Rated:  <a href="../list/rating.php?Code='. $data['rc'] .'&Rating='. $data['rr'] .'">'. $data['rr'] .'</a></li>';
     						echo'<li>Episodes:  '. $data['TotalEps'] .'</li>';
     						echo'<li>Duration:  '. $data['Duration2'] .'</li>';
+
     						echo'<li>Genre: ';
     						$count=0;
     						$g = $pdo->prepare($sql2);
@@ -104,6 +106,7 @@ if ( null==$Code ) {
     							if ($count > 0) {
     								echo ", ";
     								echo'<a href="../list/genre.php?GenreCode='. $row['GenreCode'] .'&Genre='. $row['Genre'] .'">'. $row['Genre'] .'</a>';
+
     							}
     							else {
     								echo'<a href="../list/genre.php?GenreCode='. $row['GenreCode'] .'&Genre='. $row['Genre'] .'">'. $row['Genre'] .'</a>';
@@ -111,6 +114,7 @@ if ( null==$Code ) {
     							}
     						}
     						echo '</li>';
+
     						echo'<li>Status:  '. $data['Status'] .'</li>';
     						echo'<li>Category:  <a href="../list/categories.php?Code='. $data['ccode'] .'&Category='. $data['ca'] .'">'. $data['ca'] .'</a></li>';
     						echo'<li>Year Released:  <a href="../list/year.php?Year='. $data['YearReleased'] .'">'. $data['YearReleased'] .'</a></li>';
@@ -123,6 +127,7 @@ if ( null==$Code ) {
     						$f = $pdo->prepare($sql5);
     						$f->execute(array($Code));
     						while ($row3 = $f->fetch(PDO::FETCH_ASSOC)) {
+
     							if (''. $row3['Type'] .''=="Movie"){
     								$count=0;
     								$f = $pdo->prepare($sql3);
@@ -151,6 +156,7 @@ if ( null==$Code ) {
     										echo'<li>Extra:  <a href="../detail/index.php?Code='.$row3['Extra'].'">'. $row3['Title'] .'</a></li>';
     										echo'<li>Note:  '.$row3['Note'] .'</li>';
     									}    								}
+
     								}
     								?>
     							</div>
@@ -187,6 +193,7 @@ if ( null==$Code ) {
     						echo'<li>Rated:  <a href="../list/rating.php?Code='. $data['rc'] .'&Rating='. $data['rr'] .'">'. $data['rr'] .'</a></li>';
     						echo'<li>Episodes:  '. $data['TotalEps'] .'</li>';
     						echo'<li>Duration:  '. $data['Duration2'] .'</li>';
+
     						echo'<li>Genre: ';
     						$count=0;
     						$g = $pdo->prepare($sql2);
@@ -195,6 +202,7 @@ if ( null==$Code ) {
     							if ($count > 0) {
     								echo ", ";
     								echo'<a href="../list/genre.php?GenreCode='. $row['GenreCode'] .'&Genre='. $row['Genre'] .'">'. $row['Genre'] .'</a>';
+
     							}
     							else {
     								echo'<a href="../list/genre.php?GenreCode='. $row['GenreCode'] .'&Genre='. $row['Genre'] .'">'. $row['Genre'] .'</a>';
@@ -202,6 +210,7 @@ if ( null==$Code ) {
     							}
     						}
     						echo '</li>';
+
     						echo'<li>Status:  '. $data['Status'] .'</li>';
     						echo'<li>Category:  <a href="../list/categories.php?Code='. $data['ccode'] .'&Category='. $data['ca'] .'">'. $data['ca'] .'</a></li>';
     						echo'<li>Year Released:  <a href="../list/year.php?Year='. $data['YearReleased'] .'">'. $data['YearReleased'] .'</a></li>';
