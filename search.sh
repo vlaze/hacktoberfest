@@ -11,7 +11,24 @@
 #               PDF and MOBI 
 # ------------------------------------------------------------------------------
 
-
+################################################################################
+#                        Variables                                             #
+################################################################################
+source="/Users/josdmyer/Documents/Books/Books/"
+list="/Users/josdmyer/.Scripts/log/search.txt"
+dir="/Users/josdmyer/.Scripts/log"
+COLUMNS=$(tput cols) 
+PROGNAME=$(basename "$0")
+end=$'\e[0m'
+red=$'\e[1;31m'
+yel=$'\e[1;33m'
+gre=$'\e[1;32m'
+size=${#1}
+underline=$'\e[4m'
+endunder=$'\e[24m'
+array=( "EPUB" )
+option="*"
+dup=true
 
 ################################################################################
 #                       Usage                                                  #
