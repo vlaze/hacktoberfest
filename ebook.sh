@@ -15,9 +15,12 @@
 #               move the files.  Then the lists will be deleted.
 # ------------------------------------------------------------------------------
 
-source=/Users/josdmyer/Downloads/Documents/
-dest=/Users/josdmyer/Documents/Books/Books/
-list=/Users/josdmyer/.Scripts/
+read -p "Welcome to the ebook manager. Please specify a source directory to start searching in: " source
+echo
+read -p "Now please specify the destination directory for the found ebook files: " dest
+echo
+read -p "As a last step, please type the directory where a list of ebooks will be stored in: " list
+
 option=false
 
 usage()
